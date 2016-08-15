@@ -1,6 +1,5 @@
 class OwnershipsController < ApplicationController
   before_action :logged_in_user
-  binding.pry
 
   def create
     if params[:item_code]
@@ -27,9 +26,9 @@ class OwnershipsController < ApplicationController
     # params[:type]の値にHaveボタンが押された時には「Have」,
     # Wantボタンが押された時には「Want」が設定されています。
     if params[:type] == "Want"
-      current_user.have(@item)
-    elsif params[:type] == "Have"
       current_user.want(@item)
+    elsif params[:type] == "Have"
+      current_user.have(@item)
     end
   end
 
