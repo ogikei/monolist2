@@ -10,7 +10,7 @@
       <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
       気になったアイテムが欲しければ「Want」持ってれば「Have」しましょう
     </div>
-    <%= render 'items' , items: @items %>
+    <%= render 'items' , items: @items, want_items: @want_items, have_items: @have_items %>
   <% elsif params[:q].present? %>
     <div class="alert alert-danger">
       <span class="glyphicon glyphicon-remove-sign" aria-hidden="true"></span>
