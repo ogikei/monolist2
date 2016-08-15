@@ -18,35 +18,20 @@
           </p>
         </div>
         <div class="action clearfix">
-          <% want_items.each do |want_item|  %>
-            <% if want_item.item_code == item['itemCode'] %>
-              <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
-                          :class => "btn-want btn btn-danger btn-sm want_it",
-                          :item_code => "want-#{item['itemCode']}",
-                          :remote => true,
-                          :method => :delete %>
-            <% else %>
-              <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
-                          :class => "btn-want btn btn-danger btn-sm want",
-                          :item_code => "want-#{item['itemCode']}",
-                          :remote => true,
-                          :method => :post %>
-            <% end %>
-          <% end %>
-          <% have_items.each do |have_item|  %>
-            <% if have_item.item_code == item['itemCode'] %>
-              <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have") ,
-                          :class => "btn-have btn btn-warning btn-sm have_it",
-                          :item_code => "have-#{item['itemCode']}",
-                          :remote => true,
-                          :method => :delete %>
-            <% else %>
-              <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have") ,
-                          :class => "btn-have btn btn-warning btn-sm have",
-                          :item_code => "have-#{item['itemCode']}",
-                          :remote => true,
-                          :method => :post %>
-            <% end %>
+          <% item2 = Item.find_by(item_code: item['itemCode']) %>
+          <% if item2.present? %>
+            <%= render 'items/action' , item: item2 %>
+          <% else %>
+            <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Want") ,
+                        :class => "btn-want btn btn-danger btn-sm want",
+                        :item_code => "want-#{item['itemCode']}",
+                        :remote => true,
+                        :method => :post %>
+            <%= link_to "" , ownerships_path(item_code: item['itemCode'] , type: "Have") ,
+                        :class => "btn-have btn btn-warning btn-sm have",
+                        :item_code => "have-#{item['itemCode']}",
+                        :remote => true,
+                        :method => :post %>
           <% end %>
         </div>
       </div>

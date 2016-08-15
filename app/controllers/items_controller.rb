@@ -1,8 +1,6 @@
 class ItemsController < ApplicationController
   before_action :logged_in_user , except: [:show]
   before_action :set_item, only: [:show]
-  before_action :search_want_items, only: [:new]
-  before_action :search_have_items, only: [:new]
 
   def new
     if params[:q]
@@ -20,13 +18,5 @@ class ItemsController < ApplicationController
   private
   def set_item
     @item = Item.find(params[:id])
-  end
-
-  def search_want_items
-    @want_items = current_user.want_items
-  end
-
-  def search_have_items
-    @have_items = current_user.have_items
   end
 end
