@@ -1,5 +1,6 @@
 class OwnershipsController < ApplicationController
   before_action :logged_in_user
+  binding.pry
 
   def create
     if params[:item_code]
@@ -12,7 +13,7 @@ class OwnershipsController < ApplicationController
     if @item.new_record?
       # TODO 商品情報の取得 RakutenWebService::Ichiba::Item.search を用いてください
       items = {}
-      items = RakutenWebService::Ichiba::Item.search()
+      items = RakutenWebService::Ichiba::Item.search(itemCode: params[:item_id])
 
       item                  = items.first
       @item.title           = item['itemName']
@@ -23,7 +24,6 @@ class OwnershipsController < ApplicationController
       @item.save!
     end
 
-    # TODO ユーザにwant or haveを設定する
     # params[:type]の値にHaveボタンが押された時には「Have」,
     # Wantボタンが押された時には「Want」が設定されています。
     if params[:type] == "Want"
