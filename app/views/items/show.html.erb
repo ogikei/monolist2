@@ -1,5 +1,8 @@
-<% content_for :item_ogp do %>
-  <meta property="og:title" content="<%= @item.title %> - monolist" description=<%= @item.title %>"に関する情報です。この商品を欲しい人、持ってる人を表示しています。" />
+<% content_for :title do %>
+  <%= @item.title %> - monolist
+<% end %>
+<% content_for :description do %>
+  <%= @item.title %>に関する情報です。この商品を欲しい人、持ってる人を表示しています。
 <% end %>
 
 <div class="container">
