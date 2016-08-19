@@ -32,3 +32,7 @@ bower.json
 .powenv
 
 .DS_Store
+
+/.idea/
+*.test
+*.swp
