@@ -1,0 +1,24 @@
+<div class="ranking_list">
+  <table class="table borderless">
+    <thead></thead>
+    <tbody>
+      <% items.each_with_index do |item, i| %>
+        <tr>
+          <th><span class="label label-default"><%= i + 1 %></span></th>
+        </tr>
+        <tr>
+          <td>
+            <% if item.small_image.present? %>
+              <%= link_to image_tag(item.small_image, alt: item['itemName']), item.detail_page_url %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item['itemName']) %>
+            <% end %>
+          </td>
+        </tr>
+        <tr>
+          <td><%= link_to item.title, item.detail_page_url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

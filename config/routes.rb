@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   get    'signup', to: 'users#new'
   get    'login' , to: 'sessions#new'
+  get    'ranking/have', to: 'rankings#have'
+  get    'ranking/want', to: 'rankings#want'
   post   'login' , to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
