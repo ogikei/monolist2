@@ -2,9 +2,9 @@
   <table class="table borderless">
     <thead></thead>
     <tbody>
-      <% items.each_with_index do |item, i| %>
+      <% items.each.with_index(1) do |item, i| %>
         <tr>
-          <th><span class="label label-default"><%= i + 1 %></span></th>
+          <th><span class="label label-default"><%= i %></span></th>
         </tr>
         <tr>
           <td>
